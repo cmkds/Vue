@@ -14,10 +14,14 @@
     <h1>add_method : {{ add_method() }}</h1>
     <h1>add_method : {{ add_method() }}</h1>
     <h1>add_method : {{ add_method() }}</h1>
+    <!-- 호출될때마다 계산함. -->
+
     <hr>
     <h1>add_computed : {{ add_computed }}</h1>
     <h1>add_computed : {{ add_computed }}</h1>
     <h1>add_computed : {{ add_computed }}</h1>
+<!-- 맨처음에 호출되고 변화가 없다면 저장된값을 그대로씀 -->
+
     <hr>
     <button v-on:click="dataChange">Change Data</button>
   </div>
