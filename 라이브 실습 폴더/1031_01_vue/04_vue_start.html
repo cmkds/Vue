@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id ="app">
+    {{ message }}
+  </div>
+
+  <div>
+    {{ message }}
+  </div>
+
+  <!-- Vue CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script>
+    // CODE HERE
+    // 1. Vue instance constructor
+    // const vm = new Vue()
+    // console.log(vm)
+
+    // 2. el
+    const app = new Vue({
+      el: '#app', //html과 dom을 연결시켜주는 역할
+      // id가 app 인 dom 을 연결하겠다.
+    //   // 3. data
+    // model 을 담당하는 부분
+      data: {
+        message: 'Hello, Vue!'
+      },
+
+    //   // 4. methods
+      methods: {
+        print: function () {
+          console.log(this.message) //여기서 this는 new Vue()객체이다. 자신을 호출한 객체를 가리킨다.
+          // this.$data.message  이렇게 접근해야하지만
+          // 뷰는 $data를 생략 할 수 있게 해준다.
+
+          //콘솔창에서 app.print()를 실행하면 이 함수가 실행된다.
+        },
+      
+
+        bye: function () {
+          this.message = 'Bye, Vue!'
+        },
+        // 펑션 키워드로 선언되고있다.
+        // this.message를 bye, vue 로 변경해준다.
+
+
+    //   //   // 4-1. arrow function
+        arrowBye: () => {
+          this.message = 'Arrow Function?'
+          console.log(this)
+        }
+      }
+    })
+    console.log(app)
+  </script>
+</body>
+</html>
