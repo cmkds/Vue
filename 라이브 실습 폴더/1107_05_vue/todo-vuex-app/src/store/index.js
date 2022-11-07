@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  plugins:[
+    createPersistedState(),
+  ],
   state: {
     todos: [
 
@@ -54,6 +57,14 @@ export default new Vuex.Store({
       // state.todos[index].isCompleted = !state.todos[index].isCompleted
 
     },
+    LOAD_TODOS(state) {
+      //로컬스토리지에 있는 todos를 가져와서 변수에 넣어준다.
+      const localStorageTodos = localStorage.getItem('todos')
+      // 현재 로컬은 배열이 아니라 문자열이라 역으로 파싱해야함.
+      const parsedTodos = JSON.parse(localStorageTodos)
+      console.log(parsedTodos)
+      state.todos = parsedTodos
+    },
   },
   actions: {
     createTodo(context, todoTitle){
@@ -64,18 +75,34 @@ export default new Vuex.Store({
       }
       // console.log(todoItem)
       context.commit('CREATE_TODO', todoItem)
+      //context.dispatch('saveTodosToLocalStorage') //
     },
     deleteTodo(context, todoItem) {
       //이렇게 간단한 코드만 동작하는 경우는 여기서 actions를 생략하고 원래코드에서 바로 commit을 호출해도 된다.
       context.commit('DELETE_TODO', todoItem)
+      //context.dispatch('saveTodosToLocalStorage') //
+
 
     },
     updateTodoStatus(context, todoItem){
       context.commit('UPDATE_TODO_STATUS', todoItem)
+      //context.dispatch('saveTodosToLocalStorage') //
+
     },
-    saveTodosToLocalStorage(context){
-      const jsonTodos = JSON.stringify()
-    }
+
+    //Todos를 local에 저장하는 과정
+    // 라이브러리 선언후에는 필요 없다.
+    // saveTodosToLocalStorage(context){
+    //   // 위의 todos를 문자열로 바꿔주는 변환이 필요하다.
+    //   const jsonTodos = JSON.stringify(context.state.todos)
+    //   // window.localStorage.setItem(키, 값)
+    //   localStorage.setItem('todos', jsonTodos)
+    // },
+
+    //불러오는 것도 자동이라 필요없다.
+    // loadTodos(context) {
+    //   context.commit('LOAD_TODOS')
+    // },
   },
   modules: {
   }

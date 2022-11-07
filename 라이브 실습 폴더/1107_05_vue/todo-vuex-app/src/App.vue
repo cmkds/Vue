@@ -6,6 +6,7 @@
     <h2>완료되지 않은 Todo 개수 : {{ unCompletedTodosCount }}</h2>
     <TodoList/>
     <TodoForm/>
+    <!-- <button @click="loadTodos">Todo 불러오기</button> -->
   </div>
 </template>
 
@@ -29,7 +30,11 @@ export default {
     unCompletedTodosCount() {
       return this.$store.getters.unCompletedTodosCount
     },
-      
+  },
+  methods: {
+    // loadTodos() {
+    //   this.$store.dispatch('loadTodos')
+    // }
   }
 }
 </script>

@@ -4,7 +4,8 @@
       @click="updateTodoStatus"
       :class=" { 'is-completed': todo.isCompleted } "
     >
-    <!-- v-bind에서 사용하는 객체의 스타일 바인딩 -->
+    <!-- v-bind에서 사용하는 객체의 스타일 바인딩
+    todo.isCompleted 값에따라서 is-completed가 적용될지 말지 결정 -->
 
       {{ todo.title }}
     </span>
