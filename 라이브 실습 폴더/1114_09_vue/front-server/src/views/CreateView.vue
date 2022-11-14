@@ -44,6 +44,9 @@ export default {
         data: {
           title: title,
           content: content,
+        },
+        headers: {
+          Authorization: `Token ${this.$store.state.token}`
         }
       })
         .then((res) =>{
