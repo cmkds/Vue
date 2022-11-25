@@ -64,6 +64,9 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+
+
+
 REST_FRAMEWORK = {
 #     # Authentication
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -187,3 +190,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+
+
+
